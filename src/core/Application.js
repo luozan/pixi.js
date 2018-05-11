@@ -5,18 +5,20 @@ import settings from './settings';
 import { UPDATE_PRIORITY } from './const';
 
 /**
+ * 使用这个类，可以轻松的创建一个PIXI应用。
+ * 它会自动的创建渲染器，心跳定时器(帧循环)，主容器(舞台)。
  * Convenience class to create a new PIXI application.
  * This class automatically creates the renderer, ticker
  * and root container.
  *
  * @example
- * // Create the application
+ * // 创建应用
  * const app = new PIXI.Application();
  *
- * // Add the view to the DOM
+ * // 添加视图(view)到DOM
  * document.body.appendChild(app.view);
  *
- * // ex, add display objects
+ * // 演示添加一个可视(display)对象
  * app.stage.addChild(PIXI.Sprite.fromImage('something.png'));
  *
  * @class
@@ -26,33 +28,26 @@ export default class Application
 {
     // eslint-disable-next-line valid-jsdoc
     /**
-     * @param {object} [options] - The optional renderer parameters
-     * @param {boolean} [options.autoStart=true] - automatically starts the rendering after the construction.
-     *     Note that setting this parameter to false does NOT stop the shared ticker even if you set
-     *     options.sharedTicker to true in case that it is already started. Stop it by your own.
-     * @param {number} [options.width=800] - the width of the renderers view
-     * @param {number} [options.height=600] - the height of the renderers view
-     * @param {HTMLCanvasElement} [options.view] - the canvas to use as a view, optional
-     * @param {boolean} [options.transparent=false] - If the render view is transparent, default false
-     * @param {boolean} [options.antialias=false] - sets antialias (only applicable in chrome at the moment)
-     * @param {boolean} [options.preserveDrawingBuffer=false] - enables drawing buffer preservation, enable this if you
-     *  need to call toDataUrl on the webgl context
-     * @param {number} [options.resolution=1] - The resolution / device pixel ratio of the renderer, retina would be 2
-     * @param {boolean} [options.forceCanvas=false] - prevents selection of WebGL renderer, even if such is present
-     * @param {number} [options.backgroundColor=0x000000] - The background color of the rendered area
-     *  (shown if not transparent).
-     * @param {boolean} [options.clearBeforeRender=true] - This sets if the renderer will clear the canvas or
-     *   not before the new render pass.
-     * @param {boolean} [options.roundPixels=false] - If true PixiJS will Math.floor() x/y values when rendering,
-     *  stopping pixel interpolation.
-     * @param {boolean} [options.forceFXAA=false] - forces FXAA antialiasing to be used over native.
-     *  FXAA is faster, but may not always look as great **webgl only**
-     * @param {boolean} [options.legacy=false] - `true` to ensure compatibility with older / less advanced devices.
-     *  If you experience unexplained flickering try setting this to true. **webgl only**
-     * @param {string} [options.powerPreference] - Parameter passed to webgl context, set to "high-performance"
-     *  for devices with dual graphics card **webgl only**
-     * @param {boolean} [options.sharedTicker=false] - `true` to use PIXI.ticker.shared, `false` to create new ticker.
-     * @param {boolean} [options.sharedLoader=false] - `true` to use PIXI.loaders.shared, `false` to create new Loader.
+     * @param {object} [options] - 渲染器选项参数
+     * @param {boolean} [options.autoStart=true] - 在实例化后自动启动帧循环开始渲染。
+     *     注意，在已经运行过以后，哪怕设置这个参数为false，也不会停止共享的帧循环(shared ticker)，
+     *     即使你设置options.sharedTicker为true。你只能亲自停止它。
+     * @param {number} [options.width=800] - 渲染器视图的宽度
+     * @param {number} [options.height=600] - 渲染器视图的高
+     * @param {HTMLCanvasElement} [options.view] - 传入一个canvas作为渲染用的视图，可选, optional
+     * @param {boolean} [options.transparent=false] - 渲染视图是否透明，默认为false
+     * @param {boolean} [options.antialias=false] - 设置抗锯齿（目前只在chrome中有效）
+     * @param {boolean} [options.preserveDrawingBuffer=false] - 激活绘图缓冲保存。如果你需要在WebGL渲染的情况下调用toDataUrl，请设置该属性为true。
+     * @param {number} [options.resolution=1] - 渲染器的分辨率/设备的像素比（The resolution / device pixel ratio），Apple的视网膜(retina)屏幕下，该值为2。 
+     * @param {boolean} [options.forceCanvas=false] - 强制使用Canvas渲染，而不使用WebGL
+     * @param {number} [options.backgroundColor=0x000000] - 被渲染区域的背景颜色（options.transparent为false才会显示）
+     * @param {boolean} [options.clearBeforeRender=true] - 是否清除画布上的内容后再渲染
+     * @param {boolean} [options.roundPixels=false] - 如果设置为true，PixiJS会使用Math.floor()对x/y坐标值向下取整，从而停止像素插值
+     * @param {boolean} [options.forceFXAA=false] - 在原生上应用FXAA抗锯齿，FXAA更快，但可能也并不总是那么好 **只支持WebGL渲染**
+     * @param {boolean} [options.legacy=false] - 设置为`true`以确保兼容少数旧机型，如果你的项目出现莫名其妙的闪屏，可以尝试设置该值为true。**只针对WebGL渲染**
+     * @param {string} [options.powerPreference] - 该参数会传给WebGL上下文，对拥有双显卡的设备可以设置为"high-performance" **只针对WebGL渲染**
+     * @param {boolean} [options.sharedTicker=false] - 设置为`true`会使用PIXI.ticker.shared，设置为`false`，会创建一个新的ticker
+     * @param {boolean} [options.sharedLoader=false] - 设置为`true`会使用PIXI.loaders.shared, 设置为`false`，会创建以个新的Loader.
      */
     constructor(options, arg2, arg3, arg4, arg5)
     {
@@ -68,7 +63,7 @@ export default class Application
         }
 
         /**
-         * The default options, so we mixin functionality later.
+         * 将默认选项和传入的参数混合起来
          * @member {object}
          * @protected
          */

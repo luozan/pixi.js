@@ -2,7 +2,7 @@ import * as core from '../core';
 import Device from 'ismobilejs';
 import accessibleTarget from './accessibleTarget';
 
-// add some extra variables to the container..
+// 添加一些额外的变量到容器……
 core.utils.mixins.delayMixin(
     core.DisplayObject.prototype,
     accessibleTarget
