@@ -2,21 +2,21 @@ import maxRecommendedTextures from './utils/maxRecommendedTextures';
 import canUploadSameBuffer from './utils/canUploadSameBuffer';
 
 /**
- * User's customizable globals for overriding the default PIXI settings, such
- * as a renderer's default resolution, framerate, float percision, etc.
+ * 用户的可自定义的全局设置，用于覆盖默认的PIXI设置， such
+ * 例如一个渲染器的默认分辨率、帧率、浮点精度等等。
  * @example
- * // Use the native window resolution as the default resolution
- * // will support high-density displays when rendering
+ * // 使用本地窗口分辨率作为默认分辨率
+ * // 在渲染的时候将会支持高像素密度显示
  * PIXI.settings.RESOLUTION = window.devicePixelRatio.
  *
- * // Disable interpolation when scaling, will make texture be pixelated
+ * // 在缩放的时候禁用插值，将使纹理像素化
  * PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
  * @namespace PIXI.settings
  */
 export default {
 
     /**
-     * Target frames per millisecond.
+     * 帧率，每毫秒的目标帧数。
      *
      * @static
      * @memberof PIXI.settings
@@ -26,8 +26,8 @@ export default {
     TARGET_FPMS: 0.06,
 
     /**
-     * If set to true WebGL will attempt make textures mimpaped by default.
-     * Mipmapping will only succeed if the base texture uploaded has power of two dimensions.
+     * 如果设置为true，WebGL会尝试在默认情况下使用纹理金字塔（mipmap）。
+     * 只有当被上传的基础纹理尺寸为2的次方时，纹理金字塔操作才会成功。
      *
      * @static
      * @memberof PIXI.settings
@@ -37,7 +37,7 @@ export default {
     MIPMAP_TEXTURES: true,
 
     /**
-     * Default resolution / device pixel ratio of the renderer.
+     * 渲染器的默认分辨率/设备像素比。
      *
      * @static
      * @memberof PIXI.settings
@@ -47,7 +47,7 @@ export default {
     RESOLUTION: 1,
 
     /**
-     * Default filter resolution.
+     * 默认滤镜分辨率。
      *
      * @static
      * @memberof PIXI.settings
@@ -57,7 +57,7 @@ export default {
     FILTER_RESOLUTION: 1,
 
     /**
-     * The maximum textures that this device supports.
+     * 该设备支持的最大纹理数量。
      *
      * @static
      * @memberof PIXI.settings
@@ -70,9 +70,9 @@ export default {
     // TODO: maybe add PARTICLE.BATCH_SIZE: 15000
 
     /**
-     * The default sprite batch size.
+     * 默认精灵批量大小。
      *
-     * The default aims to balance desktop and mobile devices.
+     * 该默认值用来平衡桌面和移动设备。
      *
      * @static
      * @memberof PIXI.settings
@@ -82,7 +82,7 @@ export default {
     SPRITE_BATCH_SIZE: 4096,
 
     /**
-     * The prefix that denotes a URL is for a retina asset.
+     * 表示URL的前缀是视网膜资源(retina asset)。
      *
      * @static
      * @memberof PIXI.settings
@@ -93,8 +93,7 @@ export default {
     RETINA_PREFIX: /@([0-9\.]+)x/,
 
     /**
-     * The default render options if none are supplied to {@link PIXI.WebGLRenderer}
-     * or {@link PIXI.CanvasRenderer}.
+     * {@link PIXI.WebGLRenderer}和{@link PIXI.CanvasRenderer}的默认渲染选项。
      *
      * @static
      * @constant
@@ -130,7 +129,7 @@ export default {
     },
 
     /**
-     * Default transform type.
+     * 默认变换类型。
      *
      * @static
      * @memberof PIXI.settings
@@ -140,7 +139,7 @@ export default {
     TRANSFORM_MODE: 0,
 
     /**
-     * Default Garbage Collection mode.
+     * 默认垃圾回收模式。
      *
      * @static
      * @memberof PIXI.settings
@@ -150,7 +149,7 @@ export default {
     GC_MODE: 0,
 
     /**
-     * Default Garbage Collection max idle.
+     * 垃圾回收的默认最大闲置数。
      *
      * @static
      * @memberof PIXI.settings
@@ -160,7 +159,7 @@ export default {
     GC_MAX_IDLE: 60 * 60,
 
     /**
-     * Default Garbage Collection maximum check count.
+     * 垃圾回收的默认最大检查计数。
      *
      * @static
      * @memberof PIXI.settings
@@ -170,7 +169,7 @@ export default {
     GC_MAX_CHECK_COUNT: 60 * 10,
 
     /**
-     * Default wrap modes that are supported by pixi.
+     * PIXI所支持的默认循环模式。
      *
      * @static
      * @memberof PIXI.settings
@@ -180,7 +179,7 @@ export default {
     WRAP_MODE: 0,
 
     /**
-     * The scale modes that are supported by pixi.
+     * PIXI所支持的缩放模型。
      *
      * @static
      * @memberof PIXI.settings
@@ -190,7 +189,7 @@ export default {
     SCALE_MODE: 0,
 
     /**
-     * Default specify float precision in vertex shader.
+     * 在顶点着色器中指定的默认浮点数精度。
      *
      * @static
      * @memberof PIXI.settings
@@ -200,7 +199,7 @@ export default {
     PRECISION_VERTEX: 'highp',
 
     /**
-     * Default specify float precision in fragment shader.
+     * 在片元着色器中指定的默认浮点数精度。
      *
      * @static
      * @memberof PIXI.settings
@@ -210,7 +209,7 @@ export default {
     PRECISION_FRAGMENT: 'mediump',
 
     /**
-     * Can we upload the same buffer in a single frame?
+     * 在单独的一帧中能否上传同样的缓冲。
      *
      * @static
      * @constant
@@ -220,7 +219,7 @@ export default {
     CAN_UPLOAD_SAME_BUFFER: canUploadSameBuffer(),
 
     /**
-     * Default Mesh `canvasPadding`.
+     * 默认网格`canvasPadding`.
      *
      * @see PIXI.mesh.Mesh#canvasPadding
      * @static
