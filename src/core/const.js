@@ -1,5 +1,5 @@
 /**
- * String of the current PIXI version.
+ * 当前PIXI版本的字符串
  *
  * @static
  * @constant
@@ -10,7 +10,7 @@
 export const VERSION = __VERSION__;
 
 /**
- * Two Pi.
+ * 2π
  *
  * @static
  * @constant
@@ -20,7 +20,7 @@ export const VERSION = __VERSION__;
 export const PI_2 = Math.PI * 2;
 
 /**
- * Conversion factor for converting radians to degrees.
+ * 弧度转角度
  *
  * @static
  * @constant
@@ -30,7 +30,7 @@ export const PI_2 = Math.PI * 2;
 export const RAD_TO_DEG = 180 / Math.PI;
 
 /**
- * Conversion factor for converting degrees to radians.
+ * 角度转弧度
  *
  * @static
  * @constant
@@ -40,16 +40,16 @@ export const RAD_TO_DEG = 180 / Math.PI;
 export const DEG_TO_RAD = Math.PI / 180;
 
 /**
- * Constant to identify the Renderer Type.
+ * 标识渲染器类型的常量
  *
  * @static
  * @constant
  * @memberof PIXI
  * @name RENDERER_TYPE
  * @type {object}
- * @property {number} UNKNOWN - Unknown render type.
- * @property {number} WEBGL - WebGL render type.
- * @property {number} CANVAS - Canvas render type.
+ * @property {number} UNKNOWN - 未知渲染类型。
+ * @property {number} WEBGL - WebGL渲染类型。
+ * @property {number} CANVAS - Canvas渲染类型。
  */
 export const RENDERER_TYPE = {
     UNKNOWN:    0,
@@ -58,10 +58,10 @@ export const RENDERER_TYPE = {
 };
 
 /**
- * Various blend modes supported by PIXI.
+ * PIXI所支持的各种混合模式。
  *
- * IMPORTANT - The WebGL renderer only supports the NORMAL, ADD, MULTIPLY and SCREEN blend modes.
- * Anything else will silently act like NORMAL.
+ * 注意 - WebGL渲染器仅支持NORMAL，ADD，MULTIPLY和SCREEN混合模式。
+ * 其他默认和NORMAL同样效果。
  *
  * @static
  * @constant
@@ -110,8 +110,7 @@ export const BLEND_MODES = {
 };
 
 /**
- * Various webgl draw modes. These can be used to specify which GL drawMode to use
- * under certain situations and renderers.
+ * 各种WebGL绘制模式。在某些特定的情况和特定的渲染器下，这些可以被用来指定所使用的GL drawMode。
  *
  * @static
  * @constant
@@ -137,9 +136,10 @@ export const DRAW_MODES = {
 };
 
 /**
- * The scale modes that are supported by pixi.
+ * PIXI所支持的缩放模式。
  *
- * The {@link PIXI.settings.SCALE_MODE} scale mode affects the default scaling mode of future operations.
+ * {@link PIXI.settings.SCALE_MODE} 缩放模式影响将来缩放操作的默认模式。
+ * 它可以被重新指定为LINEAR或者NEAREST中的任何一个，这取决于哪个更合适。
  * It can be re-assigned to either LINEAR or NEAREST, depending upon suitability.
  *
  * @static
@@ -147,8 +147,8 @@ export const DRAW_MODES = {
  * @memberof PIXI
  * @name SCALE_MODES
  * @type {object}
- * @property {number} LINEAR Smooth scaling
- * @property {number} NEAREST Pixelating scaling
+ * @property {number} LINEAR 平滑缩放
+ * @property {number} NEAREST 像素化缩放
  */
 export const SCALE_MODES = {
     LINEAR:     0,
@@ -156,23 +156,22 @@ export const SCALE_MODES = {
 };
 
 /**
- * The wrap modes that are supported by pixi.
+ * PIXI所支持的循环模式。
  *
- * The {@link PIXI.settings.WRAP_MODE} wrap mode affects the default wrapping mode of future operations.
- * It can be re-assigned to either CLAMP or REPEAT, depending upon suitability.
- * If the texture is non power of two then clamp will be used regardless as webGL can
- * only use REPEAT if the texture is po2.
- *
- * This property only affects WebGL.
+ * {@link PIXI.settings.WRAP_MODE} 循环模式影响将来操作的默认循环模式。
+ * 它可以被重新指定为CLAMP或者PEPEAT中的任何一个，这取决于哪个更合适。
+ * 如果纹理宽高并非是2的次方，那么不管是不是WebGL都将使用CLAMP，如果纹理宽高是2的次方，那么只会使用PEPEAT。
+ *  
+ * 该属性只对WebGL有效。
  *
  * @static
  * @constant
  * @name WRAP_MODES
  * @memberof PIXI
  * @type {object}
- * @property {number} CLAMP - The textures uvs are clamped
- * @property {number} REPEAT - The texture uvs tile and repeat
- * @property {number} MIRRORED_REPEAT - The texture uvs tile and repeat with mirroring
+ * @property {number} CLAMP - 拉伸纹理
+ * @property {number} REPEAT - 重复平铺纹理
+ * @property {number} MIRRORED_REPEAT - 镜像重复平铺纹理
  */
 export const WRAP_MODES = {
     CLAMP:          0,
@@ -181,24 +180,22 @@ export const WRAP_MODES = {
 };
 
 /**
- * The gc modes that are supported by pixi.
+ * PIXI所支持的垃圾回收模式。
  *
- * The {@link PIXI.settings.GC_MODE} Garbage Collection mode for PixiJS textures is AUTO
- * If set to GC_MODE, the renderer will occasionally check textures usage. If they are not
- * used for a specified period of time they will be removed from the GPU. They will of course
- * be uploaded again when they are required. This is a silent behind the scenes process that
- * should ensure that the GPU does not  get filled up.
+ * {@link PIXI.settings.GC_MODE} PixiJS纹理的垃圾回收模式是AUTO。
+ * 如果设置给GC_MODE，渲染器将会不时检查纹理的使用情况。如果纹理在一段时间内没有使用，则会从GPU移除。
+ * 当再次请求被移除的资源时，则会重新上传。这一切会在幕后悄然无声地进行，应当确认GPU不会被塞满。
  *
- * Handy for mobile devices!
- * This property only affects WebGL.
+ * 对于移动设备非常方便！
+ * 该属性只对WebGL有效。
  *
  * @static
  * @constant
  * @name GC_MODES
  * @memberof PIXI
  * @type {object}
- * @property {number} AUTO - Garbage collection will happen periodically automatically
- * @property {number} MANUAL - Garbage collection will need to be called manually
+ * @property {number} AUTO - 定期自动地进行垃圾回收。
+ * @property {number} MANUAL - 手动进行垃圾回收。
  */
 export const GC_MODES = {
     AUTO:           0,
@@ -206,7 +203,7 @@ export const GC_MODES = {
 };
 
 /**
- * Regexp for image type by extension.
+ * 图像类型扩展名的正则表达式。
  *
  * @static
  * @constant
@@ -217,7 +214,7 @@ export const GC_MODES = {
 export const URL_FILE_EXTENSION = /\.(\w{3,4})(?:$|\?|#)/i;
 
 /**
- * Regexp for data URI.
+ * data URL的正则表达式。
  * Based on: {@link https://github.com/ragingwind/data-uri-regex}
  *
  * @static
@@ -230,7 +227,7 @@ export const URL_FILE_EXTENSION = /\.(\w{3,4})(?:$|\?|#)/i;
 export const DATA_URI = /^\s*data:(?:([\w-]+)\/([\w+.-]+))?(?:;(charset=[\w-]+|base64))?,(.*)/i;
 
 /**
- * Regexp for SVG size.
+ * SVG宽高的正则表达式。
  *
  * @static
  * @constant
@@ -242,18 +239,18 @@ export const DATA_URI = /^\s*data:(?:([\w-]+)\/([\w+.-]+))?(?:;(charset=[\w-]+|b
 export const SVG_SIZE = /<svg[^>]*(?:\s(width|height)=('|")(\d*(?:\.\d+)?)(?:px)?('|"))[^>]*(?:\s(width|height)=('|")(\d*(?:\.\d+)?)(?:px)?('|"))[^>]*>/i; // eslint-disable-line max-len
 
 /**
- * Constants that identify shapes, mainly to prevent `instanceof` calls.
+ * 用来标识形状的常量，主要是为了防止“instanceof”调用。
  *
  * @static
  * @constant
  * @name SHAPES
  * @memberof PIXI
  * @type {object}
- * @property {number} POLY Polygon
- * @property {number} RECT Rectangle
- * @property {number} CIRC Circle
- * @property {number} ELIP Ellipse
- * @property {number} RREC Rounded Rectangle
+ * @property {number} POLY 多边形
+ * @property {number} RECT 矩形
+ * @property {number} CIRC 圆形
+ * @property {number} ELIP 椭圆
+ * @property {number} RREC 圆角矩形
  */
 export const SHAPES = {
     POLY: 0,
@@ -264,7 +261,7 @@ export const SHAPES = {
 };
 
 /**
- * Constants that specify float precision in shaders.
+ * 指定shader浮点数精度的常量。
  *
  * @static
  * @constant
@@ -282,7 +279,7 @@ export const PRECISION = {
 };
 
 /**
- * Constants that specify the transform type.
+ * 指定变换类型的常量。
  *
  * @static
  * @constant
@@ -298,15 +295,15 @@ export const TRANSFORM_MODE = {
 };
 
 /**
- * Constants that define the type of gradient on text.
+ * 在文本上定义渐变类型的常量。
  *
  * @static
  * @constant
  * @name TEXT_GRADIENT
  * @memberof PIXI
  * @type {object}
- * @property {number} LINEAR_VERTICAL Vertical gradient
- * @property {number} LINEAR_HORIZONTAL Linear gradient
+ * @property {number} LINEAR_VERTICAL 垂直渐变
+ * @property {number} LINEAR_HORIZONTAL 线性渐变
  */
 export const TEXT_GRADIENT = {
     LINEAR_VERTICAL: 0,
@@ -314,20 +311,19 @@ export const TEXT_GRADIENT = {
 };
 
 /**
- * Represents the update priorities used by internal PIXI classes when registered with
- * the {@link PIXI.ticker.Ticker} object. Higher priority items are updated first and lower
- * priority items, such as render, should go later.
+ * 表示更新优先顺序，用于PIXI内部的类注册到{@link PIXI.ticker.Ticker}对象时。
+ * 高优先级项会第一时间更新，低优先级项，例如渲染，则会在之后更新。
  *
  * @static
  * @constant
  * @name UPDATE_PRIORITY
  * @memberof PIXI
  * @type {object}
- * @property {number} INTERACTION=50 Highest priority, used for {@link PIXI.interaction.InteractionManager}
- * @property {number} HIGH=25 High priority updating, {@link PIXI.VideoBaseTexture} and {@link PIXI.extras.AnimatedSprite}
- * @property {number} NORMAL=0 Default priority for ticker events, see {@link PIXI.ticker.Ticker#add}.
- * @property {number} LOW=-25 Low priority used for {@link PIXI.Application} rendering.
- * @property {number} UTILITY=-50 Lowest priority used for {@link PIXI.prepare.BasePrepare} utility.
+ * @property {number} INTERACTION=50 高优先级, 用于{@link PIXI.interaction.InteractionManager}
+ * @property {number} HIGH=25 高优先级更新, 用于{@link PIXI.VideoBaseTexture} 和 {@link PIXI.extras.AnimatedSprite}
+ * @property {number} NORMAL=0 默认优先级，用于ticker events，参考{@link PIXI.ticker.Ticker#add}。
+ * @property {number} LOW=-25 低优先级，用于{@link PIXI.Application} 渲染时.
+ * @property {number} UTILITY=-50 最低优先级，用于通用的{@link PIXI.prepare.BasePrepare}.
  */
 export const UPDATE_PRIORITY = {
     INTERACTION: 50,
