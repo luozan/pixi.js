@@ -1,9 +1,9 @@
 import { Rectangle } from '../math';
 
 /**
- * 'Builder' pattern for bounds rectangles
- * Axis-Aligned Bounding Box
- * It is not a shape! Its mutable thing, no 'EMPTY' or that kind of problems
+ * 边界矩形的“建造者”模式
+ * 轴对齐包围盒（AABB包围盒）
+ * 这不是个形状类！它是可变的，没有'EMPTY'或者类似的问题。
  *
  * @class
  * @memberof PIXI
@@ -43,9 +43,9 @@ export default class Bounds
     }
 
     /**
-     * Checks if bounds are empty.
+     * 检查包围对象是否为空。
      *
-     * @return {boolean} True if empty.
+     * @return {boolean} True为空.
      */
     isEmpty()
     {
@@ -53,7 +53,7 @@ export default class Bounds
     }
 
     /**
-     * Clears the bounds and resets.
+     * 清除并重置包围对象。
      *
      */
     clear()
@@ -67,11 +67,11 @@ export default class Bounds
     }
 
     /**
-     * Can return Rectangle.EMPTY constant, either construct new rectangle, either use your rectangle
-     * It is not guaranteed that it will return tempRect
+     * 可能返回Rectangle.EMPTY常量，或者构建一个新的矩形，或者使用你传入的矩形。
+     * 无法保证它会返回临时的矩形。
      *
-     * @param {PIXI.Rectangle} rect - temporary object will be used if AABB is not empty
-     * @returns {PIXI.Rectangle} A rectangle of the bounds
+     * @param {PIXI.Rectangle} rect - 如果AABB不为空，将使用该临时对象。
+     * @returns {PIXI.Rectangle} 表示包围盒的矩形。
      */
     getRectangle(rect)
     {
@@ -91,9 +91,9 @@ export default class Bounds
     }
 
     /**
-     * This function should be inlined when its possible.
+     * 用一个点缩放包围盒。
      *
-     * @param {PIXI.Point} point - The point to add.
+     * @param {PIXI.Point} point - 添加的点。
      */
     addPoint(point)
     {
@@ -104,9 +104,9 @@ export default class Bounds
     }
 
     /**
-     * Adds a quad, not transformed
+     * 添加一个四元组，不变换。
      *
-     * @param {Float32Array} vertices - The verts to add.
+     * @param {Float32Array} vertices - 添加的顶点。
      */
     addQuad(vertices)
     {
@@ -151,7 +151,7 @@ export default class Bounds
     }
 
     /**
-     * Adds sprite frame, transformed.
+     * 添加精灵帧，将被变换。
      *
      * @param {PIXI.TransformBase} transform - TODO
      * @param {number} x0 - TODO
@@ -210,7 +210,7 @@ export default class Bounds
     }
 
     /**
-     * Add an array of vertices
+     * 添加一个顶点数组。
      *
      * @param {PIXI.TransformBase} transform - TODO
      * @param {Float32Array} vertices - TODO
@@ -252,7 +252,7 @@ export default class Bounds
     }
 
     /**
-     * Adds other Bounds
+     * 添加其他包围盒。
      *
      * @param {PIXI.Bounds} bounds - TODO
      */
@@ -270,7 +270,7 @@ export default class Bounds
     }
 
     /**
-     * Adds other Bounds, masked with Bounds
+     * 添加其他包围盒，并添加遮罩。
      *
      * @param {PIXI.Bounds} bounds - TODO
      * @param {PIXI.Bounds} mask - TODO
@@ -297,7 +297,7 @@ export default class Bounds
     }
 
     /**
-     * Adds other Bounds, masked with Rectangle
+     * 添加其他包围盒，并使用一个矩形遮罩
      *
      * @param {PIXI.Bounds} bounds - TODO
      * @param {PIXI.Rectangle} area - TODO
