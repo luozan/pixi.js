@@ -63,7 +63,7 @@ export default class Application
         }
 
         /**
-         * 将默认选项和传入的参数混合起来
+         * 选项参数
          * @member {object}
          * @protected
          */
@@ -75,26 +75,26 @@ export default class Application
         }, options);
 
         /**
-         * WebGL renderer if available, otherwise CanvasRenderer
+         * 会自动判断是否支持WebGL，如果支持，会使用WebGL渲染器，否则使用Canvas渲染器
          * @member {PIXI.WebGLRenderer|PIXI.CanvasRenderer}
          */
         this.renderer = autoDetectRenderer(options);
 
         /**
-         * The root display container that's rendered.
+         * 舞台是被渲染的主可视化容器（root display container）
          * @member {PIXI.Container}
          */
         this.stage = new Container();
 
         /**
-         * Internal reference to the ticker
+         * 心跳定时器的引用
          * @member {PIXI.ticker.Ticker}
          * @private
          */
         this._ticker = null;
 
         /**
-         * Ticker for doing render updates.
+         * 用来渲染更新的心跳定时器
          * @member {PIXI.ticker.Ticker}
          * @default PIXI.ticker.shared
          */
@@ -125,7 +125,7 @@ export default class Application
     }
 
     /**
-     * Render the current stage.
+     * 渲染当前的舞台
      */
     render()
     {
@@ -133,7 +133,7 @@ export default class Application
     }
 
     /**
-     * Convenience method for stopping the render.
+     * 停止渲染
      */
     stop()
     {
@@ -141,7 +141,7 @@ export default class Application
     }
 
     /**
-     * Convenience method for starting the render.
+     * 开始渲染
      */
     start()
     {
@@ -149,7 +149,7 @@ export default class Application
     }
 
     /**
-     * Reference to the renderer's canvas element.
+     * 被渲染的Canvas元素
      * @member {HTMLCanvasElement}
      * @readonly
      */
@@ -159,7 +159,7 @@ export default class Application
     }
 
     /**
-     * Reference to the renderer's screen rectangle. Its safe to use as filterArea or hitArea for whole screen
+     * 渲染器的屏幕矩形. 可以直接用它作为全屏的filterArea或者hitArea，这些操作都是安全的。
      * @member {PIXI.Rectangle}
      * @readonly
      */
@@ -169,7 +169,7 @@ export default class Application
     }
 
     /**
-     * Destroy and don't use after this.
+     * 销毁，无法再使用
      * @param {Boolean} [removeView=false] Automatically remove canvas from DOM.
      */
     destroy(removeView)
