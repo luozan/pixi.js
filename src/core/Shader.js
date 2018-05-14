@@ -23,8 +23,8 @@ function checkPrecision(src, def)
 }
 
 /**
- * Wrapper class, webGL Shader for Pixi.
- * Adds precision string if vertexSrc or fragmentSrc have no mention of it.
+ * 为Pixi封装的WebGL着色器类。
+ * 如果vertexSrc或者fragmentSrc中没有声明浮点精度，则需要传入precision字符串。
  *
  * @class
  * @extends GLShader
@@ -34,12 +34,12 @@ export default class Shader extends GLShader
 {
     /**
      *
-     * @param {WebGLRenderingContext} gl - The current WebGL rendering context
-     * @param {string|string[]} vertexSrc - The vertex shader source as an array of strings.
-     * @param {string|string[]} fragmentSrc - The fragment shader source as an array of strings.
-     * @param {object} [attributeLocations] - A key value pair showing which location eact attribute should sit.
+     * @param {WebGLRenderingContext} gl - 当前渲染中的WebGL上下文。
+     * @param {string|string[]} vertexSrc - 字符串数组类型的顶点着色器源码。
+     * @param {string|string[]} fragmentSrc - 字符串数组类型的片元着色器源码。
+     * @param {object} [attributeLocations] - 存放着色器变量指针的键值对。
                        e.g. {position:0, uvs:1}.
-     * @param {string} [precision] - The float precision of the shader. Options are 'lowp', 'mediump' or 'highp'.
+     * @param {string} [precision] - 着色器的浮点精度。选项有：'lowp', 'mediump' or 'highp'。
      */
     constructor(gl, vertexSrc, fragmentSrc, attributeLocations, precision)
     {
