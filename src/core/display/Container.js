@@ -272,7 +272,7 @@ export default class Container extends DisplayObject
      *
      * @param {number} [beginIndex=0] - 开始位置。
      * @param {number} [endIndex=this.children.length] - 结束位置。默认值是容器的大小。
-     * @returns {DisplayObject[]} List of removed children
+     * @returns {DisplayObject[]} 被移除的子对象列表。
      */
     removeChildren(beginIndex = 0, endIndex)
     {

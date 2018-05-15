@@ -8,9 +8,9 @@ import { Rectangle } from '../math';
 // _tempDisplayObjectParent = new DisplayObject();
 
 /**
- * The base class for all objects that are rendered on the screen.
- * This is an abstract class and should not be used on its own rather it should be extended.
- *
+ * 在屏幕中被渲染的所有对象的基类。
+ * 这是一个抽象类，应该从它继承，而不应当单独使用它。
+ 
  * @class
  * @extends EventEmitter
  * @memberof PIXI
@@ -30,42 +30,40 @@ export default class DisplayObject extends EventEmitter
 
         // TODO: need to create Transform from factory
         /**
-         * World transform and local transform of this object.
-         * This will become read-only later, please do not assign anything there unless you know what are you doing
+         * 这个对象的世界坐标变换和本地坐标变换。
+         * 这个属性是只读属性，请不要赋值给它，除非你清楚地知道你在做什么。
          *
          * @member {PIXI.TransformBase}
          */
         this.transform = new TransformClass();
 
         /**
-         * The opacity of the object.
+         * 透明度。
          *
          * @member {number}
          */
         this.alpha = 1;
 
         /**
-         * The visibility of the object. If false the object will not be drawn, and
-         * the updateTransform function will not be called.
+         * 对象是否可见。如果为false，将不会绘制这个对象，同时updateTransform函数也不会被调用。
          *
-         * Only affects recursive calls from parent. You can ask for bounds or call updateTransform manually
+         * 只影响该对象和它的子对象。你可以手动获取bound或者调用updateTransform。
          *
          * @member {boolean}
          */
         this.visible = true;
 
         /**
-         * Can this object be rendered, if false the object will not be drawn but the updateTransform
-         * methods will still be called.
+         * 该对象是否被渲染。如果设置为flase，将不会绘制这个对象，但仍然会调用updateTransform方法。
          *
-         * Only affects recursive calls from parent. You can ask for bounds manually
+         * 只影响该对象和它的子对象。你可以手动获取bound。
          *
          * @member {boolean}
          */
         this.renderable = true;
 
         /**
-         * The display object container that contains this display object.
+         * 包含这个显示对象的显示对象容器。
          *
          * @member {PIXI.Container}
          * @readonly
@@ -73,7 +71,7 @@ export default class DisplayObject extends EventEmitter
         this.parent = null;
 
         /**
-         * The multiplied alpha of the displayObject
+         * 用来乘以该显示对象的alpha。
          *
          * @member {number}
          * @readonly
@@ -81,10 +79,10 @@ export default class DisplayObject extends EventEmitter
         this.worldAlpha = 1;
 
         /**
-         * The area the filter is applied to. This is used as more of an optimisation
-         * rather than figuring out the dimensions of the displayObject each frame you can set this rectangle
+         * 滤镜的作用区域。这被用作优化，
+         * 而不是用来在每一帧计算显示对象的大小。你可以设置这个矩形。
          *
-         * Also works as an interaction mask
+         * 也可以作为一个交互事件的遮罩。
          *
          * @member {PIXI.Rectangle}
          */
@@ -94,7 +92,7 @@ export default class DisplayObject extends EventEmitter
         this._enabledFilters = null;
 
         /**
-         * The bounds object, this is used to calculate and store the bounds of the displayObject
+         * 对象的包围盒，这被用来计算并且储存显示对象的包围盒。
          *
          * @member {PIXI.Rectangle}
          * @private
@@ -106,7 +104,7 @@ export default class DisplayObject extends EventEmitter
         this._localBoundsRect = null;
 
         /**
-         * The original, cached mask of the object
+         * 缓存了对象的遮罩。
          *
          * @member {PIXI.Graphics|PIXI.Sprite}
          * @private
@@ -114,7 +112,7 @@ export default class DisplayObject extends EventEmitter
         this._mask = null;
 
         /**
-         * If the object has been destroyed via destroy(). If true, it should not be used.
+         * 对象是否被调用destroy()销毁。如果该值为true，则不应该再使用这个对象。
          *
          * @member {boolean}
          * @private
@@ -123,17 +121,17 @@ export default class DisplayObject extends EventEmitter
         this._destroyed = false;
 
         /**
-         * Fired when this DisplayObject is added to a Container.
+         * 当显示对象被添加到容器中时触发。
          *
          * @event PIXI.DisplayObject#added
-         * @param {PIXI.Container} container - The container added to.
+         * @param {PIXI.Container} container - 添加进的容器。
          */
 
         /**
-         * Fired when this DisplayObject is removed from a Container.
+         * 当这个显示对象从容器中移除时触发。
          *
          * @event PIXI.DisplayObject#removed
-         * @param {PIXI.Container} container - The container removed from.
+         * @param {PIXI.Container} container - 被从中移除的容器。
          */
     }
 
@@ -152,7 +150,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Updates the object transform for rendering
+     * 渲染时更新对象的变换
      *
      * TODO - Optimization pass!
      */
@@ -166,8 +164,8 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * recursively updates transform of all objects from the root to this one
-     * internal function for toLocal()
+     * 递归更新从容器根部到这个对象为止的所有对象的变换。
+     * 用于toLocal()的内部函数。
      */
     _recursivePostUpdateTransform()
     {
@@ -183,13 +181,12 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Retrieves the bounds of the displayObject as a rectangle object.
+     * 重新获取显示对象的包围盒，返回一个矩形对象。
      *
-     * @param {boolean} skipUpdate - setting to true will stop the transforms of the scene graph from
-     *  being updated. This means the calculation returned MAY be out of date BUT will give you a
-     *  nice performance boost
-     * @param {PIXI.Rectangle} rect - Optional rectangle to store the result of the bounds calculation
-     * @return {PIXI.Rectangle} the rectangular bounding area
+     * @param {boolean} skipUpdate - 设置为true将停止正在进行更新中的场景图变换。
+     *  这意味着这个计算返回的数据可能过期，但是这么做会提升性能。
+     * @param {PIXI.Rectangle} rect - 可选的参数，传入一个矩形对象储存计算出的包围盒结果。
+     * @return {PIXI.Rectangle} 矩形类型的边界范围。
      */
     getBounds(skipUpdate, rect)
     {
@@ -227,10 +224,10 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Retrieves the local bounds of the displayObject as a rectangle object
+     * 重新获取显示对象的本地坐标系包围盒，返回一个Rectangle对象。
      *
-     * @param {PIXI.Rectangle} [rect] - Optional rectangle to store the result of the bounds calculation
-     * @return {PIXI.Rectangle} the rectangular bounding area
+     * @param {PIXI.Rectangle} [rect] - 可选的参数，传入一个矩形对象储存计算出的包围盒的结果。
+     * @return {PIXI.Rectangle} 矩形类型的边界范围。
      */
     getLocalBounds(rect)
     {
@@ -259,13 +256,13 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Calculates the global position of the display object
+     * 将一个相对于该显示对象的本地坐标转换为全局坐标。
      *
-     * @param {PIXI.Point} position - The world origin to calculate from
-     * @param {PIXI.Point} [point] - A Point object in which to store the value, optional
-     *  (otherwise will create a new Point)
-     * @param {boolean} [skipUpdate=false] - Should we skip the update transform.
-     * @return {PIXI.Point} A point object representing the position of this object
+     * @param {PIXI.Point} position - 相对于该显示对象的本地坐标。
+     * @param {PIXI.Point} [point] - 一个用来储存结果的Point对象，可选。
+     *  （否则将new一个Point对象）
+     * @param {boolean} [skipUpdate=false] - 是否跳过更新变换。
+     * @return {PIXI.Point} 一个Point对象，表示转换后的坐标。
      */
     toGlobal(position, point, skipUpdate = false)
     {
@@ -293,14 +290,14 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Calculates the local position of the display object relative to another point
+     * 将一个世界坐标转换为相对于该显示对象的本地坐标。
      *
-     * @param {PIXI.Point} position - The world origin to calculate from
-     * @param {PIXI.DisplayObject} [from] - The DisplayObject to calculate the global position from
-     * @param {PIXI.Point} [point] - A Point object in which to store the value, optional
-     *  (otherwise will create a new Point)
-     * @param {boolean} [skipUpdate=false] - Should we skip the update transform
-     * @return {PIXI.Point} A point object representing the position of this object
+     * @param {PIXI.Point} position - 相对于世界坐标系原点的坐标。
+     * @param {PIXI.DisplayObject} [from] - 用来计算全局坐标的DisplayObject。
+     * @param {PIXI.Point} [point] - 一个用来储存结果的Point对象，可选。
+     *  (否则将new一个Point对象)
+     * @param {boolean} [skipUpdate=false] - 是否跳过更新变换。
+     * @return {PIXI.Point} 一个Point对象，表示转换后的坐标。
      */
     toLocal(position, from, point, skipUpdate)
     {
@@ -333,9 +330,9 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Renders the object using the WebGL renderer
+     * 使用WebGL渲染器渲染对象。
      *
-     * @param {PIXI.WebGLRenderer} renderer - The renderer
+     * @param {PIXI.WebGLRenderer} renderer - 渲染器
      */
     renderWebGL(renderer) // eslint-disable-line no-unused-vars
     {
@@ -343,9 +340,9 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Renders the object using the Canvas renderer
+     * 使用Canvas渲染器渲染对象。
      *
-     * @param {PIXI.CanvasRenderer} renderer - The renderer
+     * @param {PIXI.CanvasRenderer} renderer - 渲染器
      */
     renderCanvas(renderer) // eslint-disable-line no-unused-vars
     {
@@ -353,10 +350,10 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Set the parent Container of this DisplayObject
+     * 设置该显示对象的父容器
      *
-     * @param {PIXI.Container} container - The Container to add this DisplayObject to
-     * @return {PIXI.Container} The Container that this DisplayObject was added to
+     * @param {PIXI.Container} container - 用来添加该显示对象的容器。
+     * @return {PIXI.Container} 该显示对象被添加进的容器。
      */
     setParent(container)
     {
@@ -371,7 +368,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Convenience function to set the position, scale, skew and pivot at once.
+     * 用来一次性设置position、scale、skew和pivot的方法。
      *
      * @param {number} [x=0] - The X position
      * @param {number} [y=0] - The Y position
@@ -400,10 +397,9 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Base destroy method for generic display objects. This will automatically
-     * remove the display object from its parent Container as well as remove
-     * all current event listeners and internal references. Do not use a DisplayObject
-     * after calling `destroy`.
+     * 显示对象通用的基本销毁方法。
+     * 这会自动的将显示对象从其父容器中移除，同时会移除所有事件监听器和内部引用。
+     * 不要在调用该方法后，使用该显示对象。
      *
      */
     destroy()
@@ -430,8 +426,8 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * The position of the displayObject on the x axis relative to the local coordinates of the parent.
-     * An alias to position.x
+     * 该显示对象相对于父对象本地坐标系的X轴坐标位置。
+     * position.x的别名
      *
      * @member {number}
      */
@@ -446,8 +442,8 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * The position of the displayObject on the y axis relative to the local coordinates of the parent.
-     * An alias to position.y
+     * 该显示对象相对于父对象本地坐标系的Y轴坐标位置。
+     * position.y的别名
      *
      * @member {number}
      */
@@ -462,7 +458,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Current transform of the object based on world (parent) factors
+     * 该对象当前基于世界（父对象）因素的变换。
      *
      * @member {PIXI.Matrix}
      * @readonly
@@ -473,7 +469,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Current transform of the object based on local factors: position, scale, other stuff
+     * 该对象当前受本地因素（postion、scale等等）影响的变换
      *
      * @member {PIXI.Matrix}
      * @readonly
@@ -484,7 +480,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * The coordinate of the object relative to the local coordinates of the parent.
+     * 该对象相对于父对象本地坐标系的坐标位置。
      * Assignment by value since pixi-v4.
      *
      * @member {PIXI.Point|PIXI.ObservablePoint}
@@ -500,7 +496,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * The scale factor of the object.
+     * 对象的缩放系数。
      * Assignment by value since pixi-v4.
      *
      * @member {PIXI.Point|PIXI.ObservablePoint}
@@ -516,7 +512,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * The pivot point of the displayObject that it rotates around
+     * 显示对象的轴心点，显示对象会围绕这个点旋转。
      * Assignment by value since pixi-v4.
      *
      * @member {PIXI.Point|PIXI.ObservablePoint}
@@ -532,7 +528,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * The skew factor for the object in radians.
+     * 该对象的倾斜因数，使用弧度。
      * Assignment by value since pixi-v4.
      *
      * @member {PIXI.ObservablePoint}
@@ -548,7 +544,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * The rotation of the object in radians.
+     * 该对象旋转的角度，使用弧度。
      *
      * @member {number}
      */
@@ -563,7 +559,7 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Indicates if the object is globally visible.
+     * 表示该对象是否全局可见。即父级对象和该对象都没有被隐藏，则返回true。
      *
      * @member {boolean}
      * @readonly
@@ -586,12 +582,12 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Sets a mask for the displayObject. A mask is an object that limits the visibility of an
-     * object to the shape of the mask applied to it. In PIXI a regular mask must be a
-     * PIXI.Graphics or a PIXI.Sprite object. This allows for much faster masking in canvas as it
-     * utilises shape clipping. To remove a mask, set this property to null.
+     * 给这个显示对象设置一个遮罩。遮罩是一个对象，使对象按遮罩的形状显示内容。
+     * 在PIXI规则的遮罩一定是PIXI.Graphics或者PIXI.Sprite对象。
+     * 这使得在画布中可以更快的按形状裁剪图形，制作遮罩的效果。
+     * 设置该属性为null，即可移除遮罩。
      *
-     * @todo For the moment, PIXI.CanvasRenderer doesn't support PIXI.Sprite as mask.
+     * @todo 目前, PIXI.CanvasRenderer 不支持使用PIXI.Sprite作为遮罩.
      *
      * @member {PIXI.Graphics|PIXI.Sprite}
      */
@@ -618,9 +614,9 @@ export default class DisplayObject extends EventEmitter
     }
 
     /**
-     * Sets the filters for the displayObject.
-     * * IMPORTANT: This is a webGL only feature and will be ignored by the canvas renderer.
-     * To remove filters simply set this property to 'null'
+     * 为显示对象设置滤镜。
+     * * 重点: 该特性只支持WebGL，Canvas渲染器会忽略它。
+     * 将该属性设置为null，即可移除滤镜。
      *
      * @member {PIXI.Filter[]}
      */
