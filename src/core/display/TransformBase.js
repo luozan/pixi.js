@@ -1,7 +1,7 @@
 import { Matrix } from '../math';
 
 /**
- * Generic class to deal with traditional 2D matrix transforms
+ * 处理2D矩阵变换的通用类
  *
  * @class
  * @memberof PIXI
@@ -14,14 +14,14 @@ export default class TransformBase
     constructor()
     {
         /**
-         * The global matrix transform. It can be swapped temporarily by some functions like getLocalBounds()
+         * 全局的矩阵变换。可以通过一些如getLocalBounds()的函数临时地交换它。
          *
          * @member {PIXI.Matrix}
          */
         this.worldTransform = new Matrix();
 
         /**
-         * The local matrix transform
+         * 本地矩阵变换。
          *
          * @member {PIXI.Matrix}
          */
@@ -32,7 +32,7 @@ export default class TransformBase
     }
 
     /**
-     * TransformBase does not have decomposition, so this function wont do anything
+     * TransformBase没有分解，所以这个函数不做任何事。
      */
     updateLocalTransform()
     {
@@ -40,9 +40,9 @@ export default class TransformBase
     }
 
     /**
-     * Updates the values of the object and applies the parent's transform.
+     * 通过父对象的transform更新对象的值。
      *
-     * @param {PIXI.TransformBase} parentTransform - The transform of the parent of this object
+     * @param {PIXI.TransformBase} parentTransform - 该对象的父对象的变换。
      */
     updateTransform(parentTransform)
     {
@@ -64,8 +64,8 @@ export default class TransformBase
 }
 
 /**
- * Updates the values of the object and applies the parent's transform.
- * @param  parentTransform {PIXI.Transform} The transform of the parent of this object
+ * 通过父对象的transform更新对象的值。
+ * @param  parentTransform {PIXI.Transform} 该对象的父对象的变换。
  *
  */
 TransformBase.prototype.updateWorldTransform = TransformBase.prototype.updateTransform;
