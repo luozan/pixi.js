@@ -14,7 +14,7 @@ import { SHAPES } from '../../const';
  */
 
 /**
- * Renderer dedicated to drawing and batching graphics objects.
+ * 专用于绘制和处理矢量图形对象的渲染器。
  *
  * @class
  * @private
@@ -23,7 +23,7 @@ import { SHAPES } from '../../const';
 export default class CanvasGraphicsRenderer
 {
     /**
-     * @param {PIXI.CanvasRenderer} renderer - The current PIXI renderer.
+     * @param {PIXI.CanvasRenderer} renderer - PIXI当前使用的渲染器。
      */
     constructor(renderer)
     {
@@ -31,9 +31,9 @@ export default class CanvasGraphicsRenderer
     }
 
     /**
-     * Renders a Graphics object to a canvas.
+     * 渲染一个Graphics对象到画布上。
      *
-     * @param {PIXI.Graphics} graphics - the actual graphics object to render
+     * @param {PIXI.Graphics} graphics - 实际渲染到画布上的矢量图形对象。
      */
     render(graphics)
     {
@@ -218,7 +218,7 @@ export default class CanvasGraphicsRenderer
     }
 
     /**
-     * Updates the tint of a graphics object
+     * 更新一个矢量图形对象的混色。
      *
      * @private
      * @param {PIXI.Graphics} graphics - the graphics that will have its tint updated
@@ -254,11 +254,11 @@ export default class CanvasGraphicsRenderer
     }
 
     /**
-     * Renders a polygon.
+     * 渲染一个多边形。
      *
-     * @param {PIXI.Point[]} points - The points to render
-     * @param {boolean} close - Should the polygon be closed
-     * @param {CanvasRenderingContext2D} context - The rendering context to use
+     * @param {PIXI.Point[]} points - 渲染用的多边形顶点。
+     * @param {boolean} close - 多边形是否封闭。
+     * @param {CanvasRenderingContext2D} context - 用来渲染的渲染器上下文。
      */
     renderPolygon(points, close, context)
     {
@@ -276,7 +276,7 @@ export default class CanvasGraphicsRenderer
     }
 
     /**
-     * destroy graphics object
+     * 销毁该矢量图形对象。
      *
      */
     destroy()
