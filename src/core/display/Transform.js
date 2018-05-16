@@ -2,8 +2,8 @@ import { Point, ObservablePoint } from '../math';
 import TransformBase from './TransformBase';
 
 /**
- * Generic class to deal with traditional 2D matrix transforms
- * local transformation is calculated from position,scale,skew and rotation
+ * 处理传统2D矩阵变换的通用类。Generic class to deal with traditional 2D matrix transforms
+ * 本地变换是通过position，scale，skew和rotation计算出来的。
  *
  * @class
  * @extends PIXI.TransformBase
@@ -19,35 +19,35 @@ export default class Transform extends TransformBase
         super();
 
          /**
-         * The coordinate of the object relative to the local coordinates of the parent.
+         * 对象相对于父对象本地坐标系的坐标位置。
          *
          * @member {PIXI.Point}
          */
         this.position = new Point(0, 0);
 
         /**
-         * The scale factor of the object.
+         * 对象的缩放因数。
          *
          * @member {PIXI.Point}
          */
         this.scale = new Point(1, 1);
 
         /**
-         * The skew amount, on the x and y axis.
+         * 在x轴和y轴上的倾斜量。
          *
          * @member {PIXI.ObservablePoint}
          */
         this.skew = new ObservablePoint(this.updateSkew, this, 0, 0);
 
         /**
-         * The pivot point of the displayObject that it rotates around
+         * 显示对象的轴心点，对象会围绕它旋转。
          *
          * @member {PIXI.Point}
          */
         this.pivot = new Point(0, 0);
 
         /**
-         * The rotation value of the object, in radians
+         * 对象的旋转角度，使用弧度。
          *
          * @member {Number}
          * @private
@@ -61,7 +61,7 @@ export default class Transform extends TransformBase
     }
 
     /**
-     * Updates the skew values when the skew or rotation changes.
+     * 当skew或者rotation改变的时候，更新倾斜度。
      *
      * @private
      */
@@ -74,7 +74,7 @@ export default class Transform extends TransformBase
     }
 
     /**
-     * Updates only local matrix
+     * 只更新本地矩阵。
      */
     updateLocalTransform()
     {
@@ -90,9 +90,9 @@ export default class Transform extends TransformBase
     }
 
     /**
-     * Updates the values of the object and applies the parent's transform.
+     * 通过父对象的transform更新对象的值。
      *
-     * @param {PIXI.Transform} parentTransform - The transform of the parent of this object
+     * @param {PIXI.Transform} parentTransform - 该对象的父对象的变换。
      */
     updateTransform(parentTransform)
     {
@@ -121,9 +121,9 @@ export default class Transform extends TransformBase
     }
 
     /**
-     * Decomposes a matrix and sets the transforms properties based on it.
+     * 分解一个矩阵，并且用它设置transform属性。
      *
-     * @param {PIXI.Matrix} matrix - The matrix to decompose
+     * @param {PIXI.Matrix} matrix - 用来分解的矩阵
      */
     setFromMatrix(matrix)
     {
@@ -131,7 +131,7 @@ export default class Transform extends TransformBase
     }
 
     /**
-     * The rotation of the object in radians.
+     * 对象的旋转角度，使用弧度。
      *
      * @member {number}
      */
