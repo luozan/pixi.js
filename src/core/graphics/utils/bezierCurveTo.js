@@ -1,19 +1,19 @@
 /**
- * Calculate the points for a bezier curve and then draws it.
+ * 计算贝塞尔曲线上的点并且绘制它。
  *
- * Ignored from docs since it is not directly exposed.
+ * 自从这个类没有直接暴露给外部，也就不再在文档中显示。
  *
  * @ignore
- * @param {number} fromX - Starting point x
- * @param {number} fromY - Starting point y
- * @param {number} cpX - Control point x
- * @param {number} cpY - Control point y
- * @param {number} cpX2 - Second Control point x
- * @param {number} cpY2 - Second Control point y
- * @param {number} toX - Destination point x
- * @param {number} toY - Destination point y
- * @param {number[]} [path=[]] - Path array to push points into
- * @return {number[]} Array of points of the curve
+ * @param {number} fromX - 起点的x坐标
+ * @param {number} fromY - 起点的y坐标
+ * @param {number} cpX - 控制点的x坐标
+ * @param {number} cpY - 控制点的y坐标
+ * @param {number} cpX2 - 第二个控制点的x坐标
+ * @param {number} cpY2 - 第二个控制点的y坐标
+ * @param {number} toX - 终点的x坐标
+ * @param {number} toY - 终点的y坐标
+ * @param {number[]} [path=[]] - 用来存放点的数组
+ * @return {number[]} 存放曲线上的点的数组
  */
 export default function bezierCurveTo(fromX, fromY, cpX, cpY, cpX2, cpY2, toX, toY, path = [])
 {

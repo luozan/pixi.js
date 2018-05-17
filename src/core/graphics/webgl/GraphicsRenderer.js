@@ -11,7 +11,7 @@ import buildRoundedRectangle from './utils/buildRoundedRectangle';
 import buildCircle from './utils/buildCircle';
 
 /**
- * Renders the graphics object.
+ * 渲染图形对象。
  *
  * @class
  * @memberof PIXI
@@ -20,7 +20,7 @@ import buildCircle from './utils/buildCircle';
 export default class GraphicsRenderer extends ObjectRenderer
 {
     /**
-     * @param {PIXI.WebGLRenderer} renderer - The renderer this object renderer works for.
+     * @param {PIXI.WebGLRenderer} renderer - 运行这个对象渲染器的WebGL渲染器。
      */
     constructor(renderer)
     {
@@ -37,7 +37,7 @@ export default class GraphicsRenderer extends ObjectRenderer
     }
 
     /**
-     * Called when there is a WebGL context change
+     *当WebGL上下文改变的时候被调用。
      *
      * @private
      *
@@ -50,7 +50,7 @@ export default class GraphicsRenderer extends ObjectRenderer
     }
 
     /**
-     * Destroys this renderer.
+     * 销毁这个渲染器。
      *
      */
     destroy()
@@ -66,9 +66,9 @@ export default class GraphicsRenderer extends ObjectRenderer
     }
 
     /**
-     * Renders a graphics object.
+     * 渲染器一个图形对象。
      *
-     * @param {PIXI.Graphics} graphics - The graphics object to render.
+     * @param {PIXI.Graphics} graphics - 用来渲染的图形对象。
      */
     render(graphics)
     {
@@ -115,10 +115,10 @@ export default class GraphicsRenderer extends ObjectRenderer
     }
 
     /**
-     * Updates the graphics object
+     * 更新图形对象。
      *
      * @private
-     * @param {PIXI.Graphics} graphics - The graphics object to update
+     * @param {PIXI.Graphics} graphics - 用来更新的图形对象
      */
     updateGraphics(graphics)
     {
@@ -208,7 +208,7 @@ export default class GraphicsRenderer extends ObjectRenderer
     /**
      *
      * @private
-     * @param {WebGLRenderingContext} gl - the current WebGL drawing context
+     * @param {WebGLRenderingContext} gl - 当前WebGL绘制上下文。
      * @param {number} type - TODO @Alvin
      * @param {number} nativeLines - indicate whether the webGLData use for nativeLines.
      * @return {*} TODO

@@ -14,7 +14,7 @@ import { SHAPES } from '../../const';
  */
 
 /**
- * 专用于绘制和处理矢量图形对象的渲染器。
+ * 专用于绘制和处理图形对象的渲染器。
  *
  * @class
  * @private
@@ -33,7 +33,7 @@ export default class CanvasGraphicsRenderer
     /**
      * 渲染一个Graphics对象到画布上。
      *
-     * @param {PIXI.Graphics} graphics - 实际渲染到画布上的矢量图形对象。
+     * @param {PIXI.Graphics} graphics - 实际渲染到画布上的图形对象。
      */
     render(graphics)
     {
@@ -218,7 +218,7 @@ export default class CanvasGraphicsRenderer
     }
 
     /**
-     * 更新一个矢量图形对象的混色。
+     * 更新一个图形对象的混色。
      *
      * @private
      * @param {PIXI.Graphics} graphics - the graphics that will have its tint updated
@@ -276,7 +276,7 @@ export default class CanvasGraphicsRenderer
     }
 
     /**
-     * 销毁该矢量图形对象。
+     * 销毁该图形对象。
      *
      */
     destroy()

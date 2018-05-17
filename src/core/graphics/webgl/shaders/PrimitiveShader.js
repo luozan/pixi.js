@@ -1,7 +1,7 @@
 import Shader from '../../../Shader';
 
 /**
- * This shader is used to draw simple primitive shapes for {@link PIXI.Graphics}.
+ * 这个着色器是用于{@link PIXI.Graphics}绘制简单的基本图形。
  *
  * @class
  * @memberof PIXI
@@ -10,7 +10,7 @@ import Shader from '../../../Shader';
 export default class PrimitiveShader extends Shader
 {
     /**
-     * @param {WebGLRenderingContext} gl - The webgl shader manager this shader works for.
+     * @param {WebGLRenderingContext} gl - 运行这个着色器的WebGL着色器管理器。
      */
     constructor(gl)
     {
