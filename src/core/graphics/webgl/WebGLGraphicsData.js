@@ -1,7 +1,7 @@
 import glCore from 'pixi-gl-core';
 
 /**
- * An object containing WebGL specific properties to be used by the WebGL renderer
+ * 储存WebGL渲染器所需要的所有WebGL具体属性的对象
  *
  * @class
  * @private
@@ -10,14 +10,14 @@ import glCore from 'pixi-gl-core';
 export default class WebGLGraphicsData
 {
     /**
-     * @param {WebGLRenderingContext} gl - The current WebGL drawing context
-     * @param {PIXI.Shader} shader - The shader
-     * @param {object} attribsState - The state for the VAO
+     * @param {WebGLRenderingContext} gl - 当前使用的WebGL绘图上下文
+     * @param {PIXI.Shader} shader - 着色器
+     * @param {object} attribsState - VAO状态
      */
     constructor(gl, shader, attribsState)
     {
         /**
-         * The current WebGL drawing context
+         * 当前使用的WebGL绘图上下文
          *
          * @member {WebGLRenderingContext}
          */
@@ -25,36 +25,36 @@ export default class WebGLGraphicsData
 
         // TODO does this need to be split before uploading??
         /**
-         * An array of color components (r,g,b)
+         * 颜色组件的数组(r,g,b)
          * @member {number[]}
          */
         this.color = [0, 0, 0]; // color split!
 
         /**
-         * An array of points to draw
+         * 储存绘制所需要的点的数组
          * @member {PIXI.Point[]}
          */
         this.points = [];
 
         /**
-         * The indices of the vertices
+         * 顶点索引数组
          * @member {number[]}
          */
         this.indices = [];
         /**
-         * The main buffer
+         * 主缓冲
          * @member {WebGLBuffer}
          */
         this.buffer = glCore.GLBuffer.createVertexBuffer(gl);
 
         /**
-         * The index buffer
+         * 顶点缓冲
          * @member {WebGLBuffer}
          */
         this.indexBuffer = glCore.GLBuffer.createIndexBuffer(gl);
 
         /**
-         * Whether this graphics is dirty or not
+         * 这个图形是否被弄脏(是否需要更新)。
          * @member {boolean}
          */
         this.dirty = true;
@@ -81,7 +81,7 @@ export default class WebGLGraphicsData
     }
 
     /**
-     * Resets the vertices and the indices
+     * 重置顶点和索引
      */
     reset()
     {
@@ -90,7 +90,7 @@ export default class WebGLGraphicsData
     }
 
     /**
-     * Binds the buffers and uploads the data
+     * 绑定缓冲区，并上传数据
      */
     upload()
     {
@@ -104,7 +104,7 @@ export default class WebGLGraphicsData
     }
 
     /**
-     * Empties all the data
+     * 清空所有数据
      */
     destroy()
     {

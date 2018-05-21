@@ -1,5 +1,5 @@
 /**
- * A GraphicsData object.
+ * GraphicsData对象.
  *
  * @class
  * @memberof PIXI
@@ -8,69 +8,69 @@ export default class GraphicsData
 {
     /**
      *
-     * @param {number} lineWidth - the width of the line to draw
-     * @param {number} lineColor - the color of the line to draw
-     * @param {number} lineAlpha - the alpha of the line to draw
-     * @param {number} fillColor - the color of the fill
-     * @param {number} fillAlpha - the alpha of the fill
-     * @param {boolean} fill - whether or not the shape is filled with a colour
-     * @param {boolean} nativeLines - the method for drawing lines
-     * @param {PIXI.Circle|PIXI.Rectangle|PIXI.Ellipse|PIXI.Polygon} shape - The shape object to draw.
+     * @param {number} lineWidth - 线条的宽度
+     * @param {number} lineColor - 线条的颜色
+     * @param {number} lineAlpha - 线条的透明度通道值
+     * @param {number} fillColor - 填充的颜色
+     * @param {number} fillAlpha - 填充的透明度通道值
+     * @param {boolean} fill - 是否使用一个颜色填充这个图形
+     * @param {boolean} nativeLines - 绘制线条的方式
+     * @param {PIXI.Circle|PIXI.Rectangle|PIXI.Ellipse|PIXI.Polygon} shape - 用来绘制的形状对象。
      */
     constructor(lineWidth, lineColor, lineAlpha, fillColor, fillAlpha, fill, nativeLines, shape)
     {
         /**
-         * the width of the line to draw
+         * 线条的宽度
          * @member {number}
          */
         this.lineWidth = lineWidth;
 
         /**
-         * if true the liens will be draw using LINES instead of TRIANGLE_STRIP
+         * 如果该值为true，将会使用LINES代替TRIANGLE_STRIP绘制线条。
          * @member {boolean}
          */
         this.nativeLines = nativeLines;
 
         /**
-         * the color of the line to draw
+         * 线条的颜色
          * @member {number}
          */
         this.lineColor = lineColor;
 
         /**
-         * the alpha of the line to draw
+         * 线条的透明度通道值
          * @member {number}
          */
         this.lineAlpha = lineAlpha;
 
         /**
-         * cached tint of the line to draw
+         * 缓存线条的混色
          * @member {number}
          * @private
          */
         this._lineTint = lineColor;
 
         /**
-         * the color of the fill
+         * 填充的颜色
          * @member {number}
          */
         this.fillColor = fillColor;
 
         /**
-         * the alpha of the fill
+         * 填充的透明度通道值
          * @member {number}
          */
         this.fillAlpha = fillAlpha;
 
         /**
-         * cached tint of the fill
+         * 缓存填充的混色
          * @member {number}
          * @private
          */
         this._fillTint = fillColor;
 
         /**
-         * whether or not the shape is filled with a colour
+         * 是否使用一个颜色填充这个图形
          * @member {boolean}
          */
         this.fill = fill;
@@ -78,22 +78,22 @@ export default class GraphicsData
         this.holes = [];
 
         /**
-         * The shape object to draw.
+         * 用来绘制的形状对象。
          * @member {PIXI.Circle|PIXI.Ellipse|PIXI.Polygon|PIXI.Rectangle|PIXI.RoundedRectangle}
          */
         this.shape = shape;
 
         /**
-         * The type of the shape, see the Const.Shapes file for all the existing types,
+         * 形状的类型，参考Const.Shapes文件中的所有类型
          * @member {number}
          */
         this.type = shape.type;
     }
 
     /**
-     * Creates a new GraphicsData object with the same values as this one.
+     * 使用这个对象的值创建一个新的GraphicsData对象。
      *
-     * @return {PIXI.GraphicsData} Cloned GraphicsData object
+     * @return {PIXI.GraphicsData} 被克隆的GraphicsData对象
      */
     clone()
     {
@@ -110,9 +110,9 @@ export default class GraphicsData
     }
 
     /**
-     * Adds a hole to the shape.
+     * 添加一个洞到这个形状
      *
-     * @param {PIXI.Rectangle|PIXI.Circle} shape - The shape of the hole.
+     * @param {PIXI.Rectangle|PIXI.Circle} shape - 洞的形状
      */
     addHole(shape)
     {
@@ -120,7 +120,7 @@ export default class GraphicsData
     }
 
     /**
-     * Destroys the Graphics data.
+     * 销毁这个对象
      */
     destroy()
     {

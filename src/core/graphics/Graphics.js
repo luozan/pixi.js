@@ -17,8 +17,7 @@ const tempColor1 = new Float32Array(4);
 const tempColor2 = new Float32Array(4);
 
 /**
- * The Graphics class contains methods used to draw primitive shapes such as lines, circles and
- * rectangles to the display, and to color and fill them.
+ * 这个图形类包含绘制基本图形的各种方法，例如直线、圆和矩形，显示并且填充上色。
  *
  * @class
  * @extends PIXI.Container
@@ -28,14 +27,14 @@ export default class Graphics extends Container
 {
     /**
      *
-     * @param {boolean} [nativeLines=false] - If true the lines will be draw using LINES instead of TRIANGLE_STRIP
+     * @param {boolean} [nativeLines=false] - 如果该值为true，将会使用LINES代替TRIANGLE_STRIP绘制线条。
      */
     constructor(nativeLines = false)
     {
         super();
 
         /**
-         * The alpha value used when filling the Graphics object.
+         * 在填充这个Graphics对象时被使用的透明度通道值。
          *
          * @member {number}
          * @default 1
@@ -43,7 +42,7 @@ export default class Graphics extends Container
         this.fillAlpha = 1;
 
         /**
-         * The width (thickness) of any lines drawn.
+         * 被绘制的线条的宽度（厚度）。
          *
          * @member {number}
          * @default 0
@@ -51,14 +50,14 @@ export default class Graphics extends Container
         this.lineWidth = 0;
 
         /**
-         * If true the lines will be draw using LINES instead of TRIANGLE_STRIP
+         * 如果该值为true，将会使用LINES代替TRIANGLE_STRIP绘制线条。
          *
          * @member {boolean}
          */
         this.nativeLines = nativeLines;
 
         /**
-         * The color of any lines drawn.
+         * 被绘制的线条的颜色。
          *
          * @member {string}
          * @default 0
@@ -66,7 +65,7 @@ export default class Graphics extends Container
         this.lineColor = 0;
 
         /**
-         * Graphics data
+         * 图形数据
          *
          * @member {PIXI.GraphicsData[]}
          * @private
@@ -74,7 +73,7 @@ export default class Graphics extends Container
         this.graphicsData = [];
 
         /**
-         * The tint applied to the graphic shape. This is a hex value. Apply a value of 0xFFFFFF to
+         * 对图形混色。这是个十六进制值。用0xFFFFFF可以重置混色的颜色。
          * reset the tint.
          *
          * @member {number}
@@ -83,8 +82,7 @@ export default class Graphics extends Container
         this.tint = 0xFFFFFF;
 
         /**
-         * The previous tint applied to the graphic shape. Used to compare to the current tint and
-         * check if theres change.
+         * 前一次混色的值，用来匹配当前的混色值，并且检查是否有改变。
          *
          * @member {number}
          * @private
@@ -93,8 +91,7 @@ export default class Graphics extends Container
         this._prevTint = 0xFFFFFF;
 
         /**
-         * The blend mode to be applied to the graphic shape. Apply a value of
-         * `PIXI.BLEND_MODES.NORMAL` to reset the blend mode.
+         * 对图形使用的混合模式。设置为`PIXI.BLEND_MODES.NORMAL`可重置混合模式。
          *
          * @member {number}
          * @default PIXI.BLEND_MODES.NORMAL;
@@ -103,7 +100,7 @@ export default class Graphics extends Container
         this.blendMode = BLEND_MODES.NORMAL;
 
         /**
-         * Current path
+         * 当前路径
          *
          * @member {PIXI.GraphicsData}
          * @private
@@ -111,7 +108,7 @@ export default class Graphics extends Container
         this.currentPath = null;
 
         /**
-         * Array containing some WebGL-related properties used by the WebGL renderer.
+         * WebGL渲染器所需要的存放WebGL相关属性的数组。
          *
          * @member {object<number, object>}
          * @private
@@ -120,21 +117,21 @@ export default class Graphics extends Container
         this._webGL = {};
 
         /**
-         * Whether this shape is being used as a mask.
+         * 这个形状是否被用来当做遮罩使用。
          *
          * @member {boolean}
          */
         this.isMask = false;
 
         /**
-         * The bounds' padding used for bounds calculation.
+         * 包围盒的内边距，用于包围盒的计算。
          *
          * @member {number}
          */
         this.boundsPadding = 0;
 
         /**
-         * A cache of the local bounds to prevent recalculation.
+         * 本地包围盒的缓存，防止重新计算
          *
          * @member {PIXI.Rectangle}
          * @private
@@ -142,8 +139,7 @@ export default class Graphics extends Container
         this._localBounds = new Bounds();
 
         /**
-         * Used to detect if the graphics object has changed. If this is set to true then the graphics
-         * object will be recalculated.
+         * 被用来检测图形对象是否发生改变。如果该值设置为true，那么图形对象将被重新计算。
          *
          * @member {boolean}
          * @private
@@ -151,25 +147,25 @@ export default class Graphics extends Container
         this.dirty = 0;
 
         /**
-         * Used to detect if we need to do a fast rect check using the id compare method
+         * 被用来通过id比较，检测我们是否需要做一次快速矩形检测。
          * @type {Number}
          */
         this.fastRectDirty = -1;
 
         /**
-         * Used to detect if we clear the graphics webGL data
+         * 被用来检测我们是否清除图形的webgl数据
          * @type {Number}
          */
         this.clearDirty = 0;
 
         /**
-         * Used to detect if we we need to recalculate local bounds
+         * 被用来检测我们是否需要重新计算本地包围盒。
          * @type {Number}
          */
         this.boundsDirty = -1;
 
         /**
-         * Used to detect if the cached sprite object needs to be updated.
+         * 被用来检测被缓存的sprite对象是否需要更新。
          *
          * @member {boolean}
          * @private

@@ -3,14 +3,14 @@ import { SHAPES } from '../../../const';
 import { hex2rgb } from '../../../utils';
 
 /**
- * Builds a circle to draw
+ * 构建一个用来绘制的圆形。
  *
- * Ignored from docs since it is not directly exposed.
+ * 这个方法只在PIXI内部使用，所以不再显示到文档中。
  *
  * @ignore
  * @private
- * @param {PIXI.WebGLGraphicsData} graphicsData - The graphics object to draw
- * @param {object} webGLData - an object containing all the webGL-specific information to create this shape
+ * @param {PIXI.WebGLGraphicsData} graphicsData - 用来绘制的图形对象。
+ * @param {object} webGLData - 包含所有创建这个形状所需要的WebGL特性信息的对象。
  * @param {object} webGLDataNativeLines - an object containing all the webGL-specific information to create nativeLines
  */
 export default function buildCircle(graphicsData, webGLData, webGLDataNativeLines)
