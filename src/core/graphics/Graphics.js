@@ -176,11 +176,11 @@ export default class Graphics extends Container
         this._fastRect = false;
 
         /**
-         * When cacheAsBitmap is set to true the graphics object will be rendered as if it was a sprite.
-         * This is useful if your graphics element does not change often, as it will speed up the rendering
-         * of the object in exchange for taking up texture memory. It is also useful if you need the graphics
-         * object to be anti-aliased, because it will be rendered using canvas. This is not recommended if
-         * you are constantly redrawing the graphics element.
+         * 当cacheAsBitmap设置为true时，该图形对象将作为sprite渲染。
+         * 如果你的图形元素不经常改变，那么该属性就十分有用了。
+         * 虽然它能提升对象渲染的速度，但是会占用更多的纹理内存。
+         * 如果你需要图形对象有抗锯齿的效果，那么该属性也会有用。因为将使用canvas渲染它。of the object in exchange for taking up texture memory. It is also useful if you need the graphics
+         * 如果你总是不断的重绘这个图形元素，那么不建议使用该属性。
          *
          * @name cacheAsBitmap
          * @member {boolean}
@@ -190,10 +190,10 @@ export default class Graphics extends Container
     }
 
     /**
-     * Creates a new Graphics object with the same values as this one.
-     * Note that the only the properties of the object are cloned, not its transform (position,scale,etc)
+     * 使用该对象的值，新创建一个同样的Graphics对象。
+     * 注意，仅仅是对象的属性被克隆，而不是它的变换（position,scale,等等）
      *
-     * @return {PIXI.Graphics} A clone of the graphics object
+     * @return {PIXI.Graphics} 该图形对象的克隆
      */
     clone()
     {
@@ -224,13 +224,12 @@ export default class Graphics extends Container
     }
 
     /**
-     * Specifies the line style used for subsequent calls to Graphics methods such as the lineTo()
-     * method or the drawCircle() method.
+     * 指定线条样式，用于之后调用的绘制图形的方法，例如lineTo()方法或者drawCircle()方法。
      *
-     * @param {number} [lineWidth=0] - width of the line to draw, will update the objects stored style
-     * @param {number} [color=0] - color of the line to draw, will update the objects stored style
-     * @param {number} [alpha=1] - alpha of the line to draw, will update the objects stored style
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} [lineWidth=0] - 线条的宽度，将更新对象储存的样式
+     * @param {number} [color=0] - 线条的颜色，将更新对象储存的样式
+     * @param {number} [alpha=1] - 线条的透明度通道值，将更新对象储存的样式
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     lineStyle(lineWidth = 0, color = 0, alpha = 1)
     {
@@ -262,11 +261,11 @@ export default class Graphics extends Container
     }
 
     /**
-     * Moves the current drawing position to x, y.
+     * 移动当前的绘制坐标位置到x，y。
      *
-     * @param {number} x - the X coordinate to move to
-     * @param {number} y - the Y coordinate to move to
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} x - 移动到的X坐标
+     * @param {number} y - 移动到的Y坐标
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     moveTo(x, y)
     {
@@ -279,12 +278,12 @@ export default class Graphics extends Container
     }
 
     /**
-     * Draws a line using the current line style from the current drawing position to (x, y);
-     * The current drawing position is then set to (x, y).
+     * 使用当前线条样式绘制一条直线，从当前的绘制坐标位置到（x，y）；
+     * 之后会把当前的绘制坐标位置设置为（x，y）。
      *
-     * @param {number} x - the X coordinate to draw to
-     * @param {number} y - the Y coordinate to draw to
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} x - 绘制到的X坐标
+     * @param {number} y - 绘制到的Y坐标
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     lineTo(x, y)
     {
@@ -295,14 +294,14 @@ export default class Graphics extends Container
     }
 
     /**
-     * Calculate the points for a quadratic bezier curve and then draws it.
-     * Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c
+     * 计算表示一条二次贝塞尔曲线的点，并且绘制出来。
+     * 基于: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c
      *
-     * @param {number} cpX - Control point x
-     * @param {number} cpY - Control point y
-     * @param {number} toX - Destination point x
-     * @param {number} toY - Destination point y
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} cpX - 控制点的x坐标
+     * @param {number} cpY - 控制点的y坐标
+     * @param {number} toX - 终点的x坐标
+     * @param {number} toY - 终点的y坐标
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     quadraticCurveTo(cpX, cpY, toX, toY)
     {
@@ -348,15 +347,15 @@ export default class Graphics extends Container
     }
 
     /**
-     * Calculate the points for a bezier curve and then draws it.
+     * 计算表示一条贝塞尔曲线的点，并且绘制出来。
      *
-     * @param {number} cpX - Control point x
-     * @param {number} cpY - Control point y
-     * @param {number} cpX2 - Second Control point x
-     * @param {number} cpY2 - Second Control point y
-     * @param {number} toX - Destination point x
-     * @param {number} toY - Destination point y
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} cpX - 控制点的x坐标
+     * @param {number} cpY - 控制点的y坐标
+     * @param {number} cpX2 - 第二个控制点的x坐标
+     * @param {number} cpY2 - 第二个控制点的y坐标
+     * @param {number} toX - 终点的x坐标
+     * @param {number} toY - 终点的y坐标
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     bezierCurveTo(cpX, cpY, cpX2, cpY2, toX, toY)
     {
@@ -387,16 +386,16 @@ export default class Graphics extends Container
     }
 
     /**
-     * The arcTo() method creates an arc/curve between two tangents on the canvas.
+     * arcTo()方法会在画布上的两个切线之间创建一个圆弧/曲线。
      *
-     * "borrowed" from https://code.google.com/p/fxcanvas/ - thanks google!
+     * 采用自 https://code.google.com/p/fxcanvas/ - 感谢谷歌!
      *
-     * @param {number} x1 - The x-coordinate of the beginning of the arc
-     * @param {number} y1 - The y-coordinate of the beginning of the arc
-     * @param {number} x2 - The x-coordinate of the end of the arc
-     * @param {number} y2 - The y-coordinate of the end of the arc
-     * @param {number} radius - The radius of the arc
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} x1 - 圆弧起点的x坐标
+     * @param {number} y1 - 圆弧起点的y坐标
+     * @param {number} x2 - 圆弧终点的x坐标
+     * @param {number} y2 - 圆弧终点的y坐标
+     * @param {number} radius - 圆弧的半径
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     arcTo(x1, y1, x2, y2, radius)
     {
