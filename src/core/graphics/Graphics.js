@@ -454,18 +454,16 @@ export default class Graphics extends Container
     }
 
     /**
-     * The arc method creates an arc/curve (used to create circles, or parts of circles).
+     * 圆弧方法会创建一个圆弧/曲线（被用来创建圆形或者圆形的一部分）。
      *
-     * @param {number} cx - The x-coordinate of the center of the circle
-     * @param {number} cy - The y-coordinate of the center of the circle
-     * @param {number} radius - The radius of the circle
-     * @param {number} startAngle - The starting angle, in radians (0 is at the 3 o'clock position
-     *  of the arc's circle)
-     * @param {number} endAngle - The ending angle, in radians
-     * @param {boolean} [anticlockwise=false] - Specifies whether the drawing should be
-     *  counter-clockwise or clockwise. False is default, and indicates clockwise, while true
-     *  indicates counter-clockwise.
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} cx - 圆心的X坐标
+     * @param {number} cy - 圆心的Y坐标
+     * @param {number} radius - 圆的半径
+     * @param {number} startAngle - 开始角度，使用弧度（0弧度在3点钟方向）
+     * @param {number} endAngle - 结束角度，使用弧度
+     * @param {boolean} [anticlockwise=false] - 指定是逆时针方向绘制还是顺时针方向绘制。
+     * 默认值为False，表示顺时针，当为True时，表示逆时针。
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     arc(cx, cy, radius, startAngle, endAngle, anticlockwise = false)
     {
@@ -541,12 +539,11 @@ export default class Graphics extends Container
     }
 
     /**
-     * Specifies a simple one-color fill that subsequent calls to other Graphics methods
-     * (such as lineTo() or drawCircle()) use when drawing.
+     * 指定一个颜色，在之后调用的其他Graphics方法（例如lineTo()或者drawCircle()）绘制图形时，填充图形颜色。
      *
-     * @param {number} [color=0] - the color of the fill
-     * @param {number} [alpha=1] - the alpha of the fill
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} [color=0] - 填充的颜色
+     * @param {number} [alpha=1] - 填充的透明度通道值
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     beginFill(color = 0, alpha = 1)
     {
@@ -568,9 +565,9 @@ export default class Graphics extends Container
     }
 
     /**
-     * Applies a fill to the lines and shapes that were added since the last call to the beginFill() method.
+     * 应用一个填充到线条或者图形，使用最后一次调用beginFill()方法时设置的参数。
      *
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     endFill()
     {
@@ -582,12 +579,13 @@ export default class Graphics extends Container
     }
 
     /**
-     *
-     * @param {number} x - The X coord of the top-left of the rectangle
-     * @param {number} y - The Y coord of the top-left of the rectangle
-     * @param {number} width - The width of the rectangle
-     * @param {number} height - The height of the rectangle
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     *  画一个矩形
+     * 
+     * @param {number} x - 矩形左上角的X坐标
+     * @param {number} y - 矩形左上角的Y坐标
+     * @param {number} width - 矩形的宽度
+     * @param {number} height - 矩形的高度
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     drawRect(x, y, width, height)
     {
@@ -597,13 +595,14 @@ export default class Graphics extends Container
     }
 
     /**
-     *
-     * @param {number} x - The X coord of the top-left of the rectangle
-     * @param {number} y - The Y coord of the top-left of the rectangle
-     * @param {number} width - The width of the rectangle
-     * @param {number} height - The height of the rectangle
-     * @param {number} radius - Radius of the rectangle corners
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * 画一个圆角矩形
+     * 
+     * @param {number} x - 矩形左上角的X坐标
+     * @param {number} y - 矩形左上角的Y坐标
+     * @param {number} width - 矩形的宽度
+     * @param {number} height - 矩形的高度
+     * @param {number} radius - 矩形四个角的半径
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     drawRoundedRect(x, y, width, height, radius)
     {
@@ -613,12 +612,12 @@ export default class Graphics extends Container
     }
 
     /**
-     * Draws a circle.
+     * 画一个圆形
      *
-     * @param {number} x - The X coordinate of the center of the circle
-     * @param {number} y - The Y coordinate of the center of the circle
-     * @param {number} radius - The radius of the circle
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} x - 圆心的X坐标
+     * @param {number} y - 圆心的Y坐标
+     * @param {number} radius - 圆的半径
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     drawCircle(x, y, radius)
     {
@@ -628,13 +627,13 @@ export default class Graphics extends Container
     }
 
     /**
-     * Draws an ellipse.
+     * 画一个椭圆
      *
-     * @param {number} x - The X coordinate of the center of the ellipse
-     * @param {number} y - The Y coordinate of the center of the ellipse
-     * @param {number} width - The half width of the ellipse
-     * @param {number} height - The half height of the ellipse
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} x - 椭圆圆心的X坐标
+     * @param {number} y - 椭圆圆心的Y坐标
+     * @param {number} width - 椭圆宽的一半
+     * @param {number} height - 椭圆高的一半
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     drawEllipse(x, y, width, height)
     {
@@ -644,10 +643,10 @@ export default class Graphics extends Container
     }
 
     /**
-     * Draws a polygon using the given path.
+     * 使用传入的路径画一个多边形。
      *
-     * @param {number[]|PIXI.Point[]|PIXI.Polygon} path - The path data used to construct the polygon.
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number[]|PIXI.Point[]|PIXI.Polygon} path - 被用来构建多边形的路径数据。
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     drawPolygon(path)
     {
@@ -685,15 +684,15 @@ export default class Graphics extends Container
     }
 
     /**
-     * Draw a star shape with an abitrary number of points.
+     * 画一个任意数量顶点的星形
      *
-     * @param {number} x - Center X position of the star
-     * @param {number} y - Center Y position of the star
-     * @param {number} points - The number of points of the star, must be > 1
-     * @param {number} radius - The outer radius of the star
-     * @param {number} [innerRadius] - The inner radius between points, default half `radius`
-     * @param {number} [rotation=0] - The rotation of the star in radians, where 0 is vertical
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @param {number} x - 星形的中心点的X坐标。
+     * @param {number} y - 星形的中心点的Y坐标。
+     * @param {number} points - 星形的顶点数量，必须 > 1。
+     * @param {number} radius - 星形外角的角度。
+     * @param {number} [innerRadius] - 两个顶点之间的内角角度，默认为`radius`的一半。
+     * @param {number} [rotation=0] - 星形的旋转角度，使用弧度，为0的时候，处在竖直方向。
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     drawStar(x, y, points, radius, innerRadius, rotation = 0)
     {
@@ -719,9 +718,9 @@ export default class Graphics extends Container
     }
 
     /**
-     * Clears the graphics that were drawn to this Graphics object, and resets fill and line style settings.
+     * 清除该Graphics对象绘制的图形，并且重置填充颜色和线条样式的设置。
      *
-     * @return {PIXI.Graphics} This Graphics object. Good for chaining method calls
+     * @return {PIXI.Graphics} 这个Graphics对象。方便链式调用。
      */
     clear()
     {
@@ -743,10 +742,10 @@ export default class Graphics extends Container
     }
 
     /**
-     * True if graphics consists of one rectangle, and thus, can be drawn like a Sprite and
-     * masked with gl.scissor.
+     * 为True时，表示图形由一个矩形组成。 
+     * 因此可以像Sprite对象一样画出来，并且使用gl.scissor剪裁它。
      *
-     * @returns {boolean} True if only 1 rect.
+     * @returns {boolean} 仅仅是一个矩形的时候返回True。
      */
     isFastRect()
     {
@@ -756,10 +755,10 @@ export default class Graphics extends Container
     }
 
     /**
-     * Renders the object using the WebGL renderer
+     * 使用WebGL渲染器渲染该对象。
      *
      * @private
-     * @param {PIXI.WebGLRenderer} renderer - The renderer
+     * @param {PIXI.WebGLRenderer} renderer - 渲染器
      */
     _renderWebGL(renderer)
     {
@@ -783,10 +782,10 @@ export default class Graphics extends Container
     }
 
     /**
-     * Renders a sprite rectangle.
+     * 用sprite对象渲染一个矩形(sprite rectangle)。
      *
      * @private
-     * @param {PIXI.WebGLRenderer} renderer - The renderer
+     * @param {PIXI.WebGLRenderer} renderer - 渲染器
      */
     _renderSpriteRect(renderer)
     {
@@ -833,10 +832,10 @@ export default class Graphics extends Container
     }
 
     /**
-     * Renders the object using the Canvas renderer
+     * 使用Canvas渲染器渲染该对象。
      *
      * @private
-     * @param {PIXI.CanvasRenderer} renderer - The renderer
+     * @param {PIXI.CanvasRenderer} renderer - 渲染器
      */
     _renderCanvas(renderer)
     {
@@ -849,7 +848,7 @@ export default class Graphics extends Container
     }
 
     /**
-     * Retrieves the bounds of the graphic shape as a rectangle object
+     * 重新计算图形的包围盒，作为一个rectangle对象。
      *
      * @private
      */
@@ -869,10 +868,10 @@ export default class Graphics extends Container
     }
 
     /**
-     * Tests if a point is inside this graphics object
+     * 检测一个点是否在该图形对象内。
      *
-     * @param {PIXI.Point} point - the point to test
-     * @return {boolean} the result of the test
+     * @param {PIXI.Point} point - 被检测的点
+     * @return {boolean} 检测结果
      */
     containsPoint(point)
     {
@@ -916,7 +915,7 @@ export default class Graphics extends Container
     }
 
     /**
-     * Update the bounds of the object
+     * 更新对象的包围盒
      *
      */
     updateLocalBounds()
@@ -1043,10 +1042,10 @@ export default class Graphics extends Container
     }
 
     /**
-     * Draws the given shape to this Graphics object. Can be any of Circle, Rectangle, Ellipse, Line or Polygon.
+     * 用这个Graphics对象绘制传入的形状。可以是Circle，Rectangle，Ellipse，Line和多边形中的任何一个。
      *
-     * @param {PIXI.Circle|PIXI.Ellipse|PIXI.Polygon|PIXI.Rectangle|PIXI.RoundedRectangle} shape - The shape object to draw.
-     * @return {PIXI.GraphicsData} The generated GraphicsData object.
+     * @param {PIXI.Circle|PIXI.Ellipse|PIXI.Polygon|PIXI.Rectangle|PIXI.RoundedRectangle} shape - 被绘制的形状
+     * @return {PIXI.GraphicsData} 生成的GraphicsData对象
      */
     drawShape(shape)
     {
@@ -1086,11 +1085,11 @@ export default class Graphics extends Container
     }
 
     /**
-     * Generates a canvas texture.
+     * 生成一个画布纹理
      *
-     * @param {number} scaleMode - The scale mode of the texture.
-     * @param {number} resolution - The resolution of the texture.
-     * @return {PIXI.Texture} The new texture.
+     * @param {number} scaleMode - 纹理的缩放模式
+     * @param {number} resolution - 纹理的设备像素比。
+     * @return {PIXI.Texture} 新的纹理。
      */
     generateCanvasTexture(scaleMode, resolution = 1)
     {
@@ -1122,9 +1121,9 @@ export default class Graphics extends Container
     }
 
     /**
-     * Closes the current path.
+     * 关闭当前路径
      *
-     * @return {PIXI.Graphics} Returns itself.
+     * @return {PIXI.Graphics} 返回这个对象本身。
      */
     closePath()
     {
@@ -1140,9 +1139,9 @@ export default class Graphics extends Container
     }
 
     /**
-     * Adds a hole in the current path.
+     * 添加一个洞到当前路径
      *
-     * @return {PIXI.Graphics} Returns itself.
+     * @return {PIXI.Graphics} 返回这个对象本身。
      */
     addHole()
     {
@@ -1158,16 +1157,15 @@ export default class Graphics extends Container
     }
 
     /**
-     * Destroys the Graphics object.
+     * 销毁这个Graphics对象。
      *
-     * @param {object|boolean} [options] - Options parameter. A boolean will act as if all
-     *  options have been set to that value
-     * @param {boolean} [options.children=false] - if set to true, all the children will have
-     *  their destroy method called as well. 'options' will be passed on to those calls.
-     * @param {boolean} [options.texture=false] - Only used for child Sprites if options.children is set to true
-     *  Should it destroy the texture of the child sprite
-     * @param {boolean} [options.baseTexture=false] - Only used for child Sprites if options.children is set to true
-     *  Should it destroy the base texture of the child sprite
+     * @param {object|boolean} [options] - 选项参数。 如果传入一个布尔值，那么所有子选项都会设置成这个值。
+     * @param {boolean} [options.children=false] - 如果设置为true，该对象的所有子对象都会被调用销毁方法。
+     * 'options'将被传入给子对象的销毁方法。
+     * @param {boolean} [options.texture=false] - 只对Sprite类型的子对象有用。
+     * 如果options.children设置为ture，则会销毁精灵子对象的纹理。
+     * @param {boolean} [options.baseTexture=false] - 只对Sprite类型的子对象有用。
+     * 如果options.children设置为ture，则会销毁精灵子对象的基本纹理。
      */
     destroy(options)
     {
