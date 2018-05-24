@@ -2,7 +2,7 @@ import Rectangle from './Rectangle';
 import { SHAPES } from '../../const';
 
 /**
- * Circle对象常被用作显示对象的碰撞区域
+ * 圆形对象常被用作显示对象的碰撞区域
  *
  * @class
  * @memberof PIXI

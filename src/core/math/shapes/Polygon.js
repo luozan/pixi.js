@@ -37,14 +37,14 @@ export default class Polygon
         this.closed = true;
 
         /**
-         * An array of the points of this polygon
+         * 存放多边形顶点的数组
          *
          * @member {number[]}
          */
         this.points = points;
 
         /**
-         * The type of the object, mainly used to avoid `instanceof` checks
+         * 对象的类型，主要被用来避免`instanceof`检测
          *
          * @member {number}
          * @readOnly
@@ -55,9 +55,9 @@ export default class Polygon
     }
 
     /**
-     * Creates a clone of this polygon
+     * 创建该多边形对象实例的克隆
      *
-     * @return {PIXI.Polygon} a copy of the polygon
+     * @return {PIXI.Polygon} 多边形对象的克隆
      */
     clone()
     {
@@ -65,7 +65,7 @@ export default class Polygon
     }
 
     /**
-     * Closes the polygon, adding points if necessary.
+     * 关闭多边形, 必要时添加点。
      *
      */
     close()
@@ -80,11 +80,11 @@ export default class Polygon
     }
 
     /**
-     * Checks whether the x and y coordinates passed to this function are contained within this polygon
+     * 检查传入的X和Y坐标是否包含在这个多边形内。
      *
-     * @param {number} x - The X coordinate of the point to test
-     * @param {number} y - The Y coordinate of the point to test
-     * @return {boolean} Whether the x/y coordinates are within this polygon
+     * @param {number} x - 测试点的X坐标
+     * @param {number} y - 测试点的Y坐标
+     * @return {boolean} x/y坐标是否在这个多边形内
      */
     contains(x, y)
     {
