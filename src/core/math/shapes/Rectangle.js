@@ -1,8 +1,8 @@
 import { SHAPES } from '../../const';
 
 /**
- * Rectangle object is an area defined by its position, as indicated by its top-left corner
- * point (x, y) and by its width and its height.
+ * 矩形对象是一个由它的位置定义的区域，
+ * 通过矩形左上角的坐标(x,y)和它的宽高来表示。
  *
  * @class
  * @memberof PIXI
