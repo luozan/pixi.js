@@ -10,10 +10,10 @@ import { SHAPES } from '../../const';
 export default class Rectangle
 {
     /**
-     * @param {number} [x=0] - The X coordinate of the upper-left corner of the rectangle
-     * @param {number} [y=0] - The Y coordinate of the upper-left corner of the rectangle
-     * @param {number} [width=0] - The overall width of this rectangle
-     * @param {number} [height=0] - The overall height of this rectangle
+     * @param {number} [x=0] - 矩形左上角的X坐标
+     * @param {number} [y=0] - 矩形左上角的Y坐标
+     * @param {number} [width=0] - 矩形整体的宽度
+     * @param {number} [height=0] - 矩形整体的高度
      */
     constructor(x = 0, y = 0, width = 0, height = 0)
     {
@@ -42,7 +42,7 @@ export default class Rectangle
         this.height = Number(height);
 
         /**
-         * The type of the object, mainly used to avoid `instanceof` checks
+         * 对象的类型，主要被用来避免`instanceof`检测
          *
          * @member {number}
          * @readOnly
@@ -53,7 +53,7 @@ export default class Rectangle
     }
 
     /**
-     * returns the left edge of the rectangle
+     * 返回矩形最左侧的X坐标
      *
      * @member {number}
      */
@@ -63,7 +63,7 @@ export default class Rectangle
     }
 
     /**
-     * returns the right edge of the rectangle
+     * 返回矩形最右侧的X坐标
      *
      * @member {number}
      */
@@ -73,7 +73,7 @@ export default class Rectangle
     }
 
     /**
-     * returns the top edge of the rectangle
+     * 返回矩形最上面的Y坐标
      *
      * @member {number}
      */
@@ -83,7 +83,7 @@ export default class Rectangle
     }
 
     /**
-     * returns the bottom edge of the rectangle
+     * 返回矩形最下面的Y坐标
      *
      * @member {number}
      */
@@ -93,7 +93,7 @@ export default class Rectangle
     }
 
     /**
-     * A constant empty rectangle.
+     * 一个所有值为0的空矩形
      *
      * @static
      * @constant
@@ -104,9 +104,9 @@ export default class Rectangle
     }
 
     /**
-     * Creates a clone of this Rectangle
+     * 克隆这个矩形对象
      *
-     * @return {PIXI.Rectangle} a copy of the rectangle
+     * @return {PIXI.Rectangle} 新拷贝的矩形
      */
     clone()
     {
@@ -114,10 +114,10 @@ export default class Rectangle
     }
 
     /**
-     * Copies another rectangle to this one.
+     * 复制另一个矩形的参数到这个矩形
      *
-     * @param {PIXI.Rectangle} rectangle - The rectangle to copy.
-     * @return {PIXI.Rectangle} Returns itself.
+     * @param {PIXI.Rectangle} rectangle - 被复制的矩形
+     * @return {PIXI.Rectangle} 返回这个矩形本身
      */
     copy(rectangle)
     {
@@ -130,11 +130,11 @@ export default class Rectangle
     }
 
     /**
-     * Checks whether the x and y coordinates given are contained within this Rectangle
+     * 检查传入的X和Y坐标是否包含在这个矩形内。
      *
-     * @param {number} x - The X coordinate of the point to test
-     * @param {number} y - The Y coordinate of the point to test
-     * @return {boolean} Whether the x/y coordinates are within this Rectangle
+     * @param {number} x - 测试点的X坐标
+     * @param {number} y - 测试点的Y坐标
+     * @return {boolean} x/y坐标是否在这个矩形内
      */
     contains(x, y)
     {
@@ -155,10 +155,10 @@ export default class Rectangle
     }
 
     /**
-     * Pads the rectangle making it grow in all directions.
+     * 用传入的内边距撑大这个矩形
      *
-     * @param {number} paddingX - The horizontal padding amount.
-     * @param {number} [paddingY] - The vertical padding amount.
+     * @param {number} paddingX - 水平内边距
+     * @param {number} [paddingY] - 垂直内边距
      */
     pad(paddingX, paddingY)
     {
@@ -173,9 +173,9 @@ export default class Rectangle
     }
 
     /**
-     * Fits this rectangle around the passed one.
+     * 用这个矩形去拟合传入的矩形
      *
-     * @param {PIXI.Rectangle} rectangle - The rectangle to fit.
+     * @param {PIXI.Rectangle} rectangle - 用来拟合的矩形
      */
     fit(rectangle)
     {
@@ -220,9 +220,9 @@ export default class Rectangle
     }
 
     /**
-     * Enlarges this rectangle to include the passed rectangle.
+     * 扩大这个矩形去容纳传入的矩形
      *
-     * @param {PIXI.Rectangle} rectangle - The rectangle to include.
+     * @param {PIXI.Rectangle} rectangle - 被包住的矩形
      */
     enlarge(rectangle)
     {
